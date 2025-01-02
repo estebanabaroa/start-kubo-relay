@@ -18,8 +18,8 @@ if [ -z "${DEPLOY_PASSWORD+xxx}" ]; then echo "DEPLOY_PASSWORD not set" && exit;
 
 SCRIPT="
 cd /home
-git clone https://github.com/plebbit/ipfs-tracker.git
-cd ipfs-tracker
+git clone https://github.com/estebanabaroa/start-kubo-relay.git
+cd start-kubo-relay
 git reset HEAD --hard
 git pull
 "
@@ -29,16 +29,16 @@ echo "$SCRIPT" | sshpass -p "$DEPLOY_PASSWORD" ssh "$DEPLOY_USER"@"$DEPLOY_HOST"
 
 # copy files
 FILE_NAMES=(
-  .env
+  # .env
 )
 
 # copy files
 for FILE_NAME in ${FILE_NAMES[@]}; do
-  sshpass -p "$DEPLOY_PASSWORD" scp $FILE_NAME "$DEPLOY_USER"@"$DEPLOY_HOST":/home/ipfs-tracker
+  sshpass -p "$DEPLOY_PASSWORD" scp $FILE_NAME "$DEPLOY_USER"@"$DEPLOY_HOST":/home/start-kubo-relay
 done
 
 SCRIPT="
-cd /home/ipfs-tracker
+cd /home/start-kubo-relay
 scripts/start-docker.sh
 "
 

@@ -109,9 +109,9 @@ const plebbitOptions = {
   ipfsHttpClientsOptions: ['http://127.0.0.1:5001/api/v0'],
   httpRoutersOptions: [
     'https://routing.lol',
-    // 'https://peers.pleb.bot',
-    // 'https://peers.plebpubsub.xyz',
-    // 'https://peers.forumindex.com'
+    'https://peers.pleb.bot',
+    'https://peers.plebpubsub.xyz',
+    'https://peers.forumindex.com'
   ]
 }
 let addressesRewriterStartPort = 19575
