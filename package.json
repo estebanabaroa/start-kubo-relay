@@ -1,0 +1,12 @@
+{
+  "name": "kubo-relay-node",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "addresses-rewriter-proxy-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
