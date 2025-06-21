@@ -122,4 +122,4 @@ IPFS_PATH=.ipfs ./ipfs config --json Swarm.RelayService '{
   "MaxReservationsPerASN": 500
 }'
 
-IPFS_PATH=.ipfs ./ipfs daemon
+IPFS_LOGGING=debug IPFS_PATH=.ipfs ./ipfs daemon
