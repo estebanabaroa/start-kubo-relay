@@ -19,18 +19,18 @@ docker run \
 docker logs --follow ipfs &
 sleep 5
 
-docker rm -f addresses-rewriter-proxy-server 2>/dev/null
+# docker rm -f addresses-rewriter-proxy-server 2>/dev/null
 
-# start addresses-rewriter-proxy-server
-docker run \
-  --detach \
-  --network=host \
-  --volume=$(pwd):/usr/src/addresses-rewriter-proxy-server \
-  --workdir=/usr/src/addresses-rewriter-proxy-server \
-  --name addresses-rewriter-proxy-server \
-  --restart always \
-  --log-opt max-size=10m \
-  --log-opt max-file=5 \
-  node:18 addresses-rewriter-proxy-server.js
+# # start addresses-rewriter-proxy-server
+# docker run \
+#   --detach \
+#   --network=host \
+#   --volume=$(pwd):/usr/src/addresses-rewriter-proxy-server \
+#   --workdir=/usr/src/addresses-rewriter-proxy-server \
+#   --name addresses-rewriter-proxy-server \
+#   --restart always \
+#   --log-opt max-size=10m \
+#   --log-opt max-file=5 \
+#   node:18 addresses-rewriter-proxy-server.js
 
-docker logs --follow addresses-rewriter-proxy-server
+# docker logs --follow addresses-rewriter-proxy-server
