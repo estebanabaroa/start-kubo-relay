@@ -18,6 +18,87 @@ fi
 
 IPFS_PATH=.ipfs ./ipfs init
 
+# config routers, not needed the relays dont do any provide, but we do need to disable dht
+IPFS_PATH=.ipfs ./ipfs config --json Routing '{
+  "Methods": {
+    "find-peers": {
+      "RouterName": "HttpRouterNotSupported"
+    },
+    "find-providers": {
+      "RouterName": "HttpRoutersParallel"
+    },
+    "get-ipns": {
+      "RouterName": "HttpRouterNotSupported"
+    },
+    "provide": {
+      "RouterName": "HttpRoutersParallel"
+    },
+    "put-ipns": {
+      "RouterName": "HttpRouterNotSupported"
+    }
+  },
+  "Routers": {
+    "HttpRouter1": {
+      "Parameters": {
+        "Endpoint": "http://127.0.0.1:19575"
+      },
+      "Type": "http"
+    },
+    "HttpRouter2": {
+      "Parameters": {
+        "Endpoint": "http://127.0.0.1:19576"
+      },
+      "Type": "http"
+    },
+    "HttpRouter3": {
+      "Parameters": {
+        "Endpoint": "http://127.0.0.1:19577"
+      },
+      "Type": "http"
+    },
+    "HttpRouter4": {
+      "Parameters": {
+        "Endpoint": "http://127.0.0.1:19578"
+      },
+      "Type": "http"
+    },
+    "HttpRouterNotSupported": {
+      "Parameters": {
+        "Endpoint": "http://kubonotsupported"
+      },
+      "Type": "http"
+    },
+    "HttpRoutersParallel": {
+      "Parameters": {
+        "Routers": [
+          {
+            "IgnoreErrors": true,
+            "RouterName": "HttpRouter1",
+            "Timeout": "10s"
+          },
+          {
+            "IgnoreErrors": true,
+            "RouterName": "HttpRouter2",
+            "Timeout": "10s"
+          },
+          {
+            "IgnoreErrors": true,
+            "RouterName": "HttpRouter3",
+            "Timeout": "10s"
+          },
+          {
+            "IgnoreErrors": true,
+            "RouterName": "HttpRouter4",
+            "Timeout": "10s"
+          }
+        ]
+      },
+      "Type": "parallel"
+    }
+  },
+  "Type": "custom"
+}'
+
 # config relay
 IPFS_PATH=.ipfs ./ipfs config --json Swarm.RelayService '{
   "Enabled": true,

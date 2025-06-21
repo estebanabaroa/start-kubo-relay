@@ -19,6 +19,8 @@ docker run \
 docker logs --follow ipfs &
 sleep 5
 
+
+# not needed, the relays don't do any provide
 # docker rm -f addresses-rewriter-proxy-server 2>/dev/null
 
 # # start addresses-rewriter-proxy-server
